@@ -11,12 +11,15 @@
         {{ todo.id ? "Update" : "Add" }}
       </button>
     </div>
-    <ul>
+    <ul *ngIf="todoList.length; else noTodo">
       <li *ngFor="let todo of todoList">
         <label for="">{{ todo.title }}</label>
         <i (click)="editTodo(todo)" class="fa fa-pencil"></i>
         <i (click)="deleteTodo(todo.id)" class="fa fa-times"></i>
       </li>
     </ul>
+    <ng-template #noTodo>
+      <h3>No todo found please add one.</h3>
+    </ng-template>
   </div>
 </div>
